@@ -48,6 +48,23 @@ void peek()
     }
 }
 
+void change(){
+  int pos, newValue;
+    if (top == -1) {
+        printf("Stack is empty\n");
+        return;
+    }
+    printf("Enter the position :");
+    scanf("%d", &pos);
+    if (pos < 1 || pos > top + 1) {
+        printf("Invalid position\n");
+        return;
+    }
+    printf("Enter the new value: ");
+    scanf("%d", &newValue);
+    stack[top - pos + 1] = newValue;
+}
+
 void display()
 {
     int i;
@@ -62,14 +79,12 @@ void display()
 int main()
 {
     int ch;
-    while (1)
-    {
+    while (1) {
         printf("\n*** Stack Menu ***");
-        printf("\n\n1.Insert\n2.Delete\n3.Display\n4.Peek\n5.Exit");
+        printf("\n\n1.Insert\n2.Delete\n3.Display\n4.Peek\n5.Change\n6.Exit");
         printf("\n\nEnter your choice :");
         scanf("%d", &ch);
-        switch (ch)
-        {
+        switch (ch) {
         case 1:
             push();
             break;
@@ -83,6 +98,9 @@ int main()
             peek();
             break;
         case 5:
+            change();
+            break;
+        case 6:
             exit(0);
         default:
             printf("\nWrong Choice!!");
